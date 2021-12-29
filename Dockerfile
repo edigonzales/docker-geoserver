@@ -1,11 +1,10 @@
 FROM tomcat:9-jre11
+#FROM tomcat:9-jre11-temurin
 
 LABEL maintainer="Stefan Ziegler stefan.ziegler.de@gmail.com"
 
-#VOLUME /geodata
-
 ARG GEOSERVER_VERSION=2.20.1
-ENV GEOSERVER_DATA_DIR /var/local/geoserver
+ENV GEOSERVER_DATA_DIR /usr/local/geoserver/data
 ENV GEOSERVER_INSTALL_DIR /usr/local/geoserver
 
 # Uncomment to use APT cache (requires apt-cacher-ng on host)
@@ -18,19 +17,20 @@ ENV GEOSERVER_INSTALL_DIR /usr/local/geoserver
 #	&& apt-get install -yq ttf-mscorefonts-installer \
 #	&& rm -rf /var/lib/apt/lists/*
 
-SOGIS fonts
+#RUN apt-get update && apt-get install -y wget unzip
+
+#SOGIS fonts
 ADD fonts/* /usr/share/fonts/truetype/
 RUN fc-cache -f && fc-list | sort
 
 # GeoServer
 ADD conf/geoserver.xml /usr/local/tomcat/conf/Catalina/localhost/geoserver.xml
-RUN mkdir -p ${GEOSERVER_DATA_DIR} \
-	&& mkdir ${GEOSERVER_INSTALL_DIR} \
-	&& cd ${GEOSERVER_INSTALL_DIR} \
-	&& wget http://sourceforge.net/projects/geoserver/files/GeoServer/${GEOSERVER_VERSION}/geoserver-${GEOSERVER_VERSION}-war.zip \
-	&& unzip geoserver-${GEOSERVER_VERSION}-war.zip \
-	&& unzip geoserver.war \
-	&& rm -rf geoserver-${GEOSERVER_VERSION}-war.zip geoserver.war target *.txt
+RUN mkdir ${GEOSERVER_INSTALL_DIR} \
+    && cd ${GEOSERVER_INSTALL_DIR} \
+    && wget http://sourceforge.net/projects/geoserver/files/GeoServer/${GEOSERVER_VERSION}/geoserver-${GEOSERVER_VERSION}-war.zip \
+    && unzip geoserver-${GEOSERVER_VERSION}-war.zip \
+    && unzip geoserver.war \
+    && rm -rf geoserver-${GEOSERVER_VERSION}-war.zip geoserver.war target *.txt
 
 # Replace default data directory
 #RUN mkdir -p /tmp/gs_tmp
@@ -39,17 +39,12 @@ RUN mkdir -p ${GEOSERVER_DATA_DIR} \
 
 # GeoServer modules    
 RUN cd ${GEOSERVER_INSTALL_DIR}/WEB-INF/lib \
-#    && wget http://sourceforge.net/projects/geoserver/files/GeoServer/${GEOSERVER_VERSION}/extensions/geoserver-${GEOSERVER_VERSION}-importer-plugin.zip \
-#    && unzip -o geoserver-${GEOSERVER_VERSION}-importer-plugin.zip \
-#    && rm -rf geoserver-${GEOSERVER_VERSION}-importer-plugin.zip \
-
-   && wget http://sourceforge.net/projects/geoserver/files/GeoServer/${GEOSERVER_VERSION}/extensions/geoserver-${GEOSERVER_VERSION}-monitor-plugin.zip \
-   && unzip -o geoserver-${GEOSERVER_VERSION}-monitor-plugin.zip \
-   && rm -rf geoserver-${GEOSERVER_VERSION}-monitor-plugin.zip 
-   && wget http://sourceforge.net/projects/geoserver/files/GeoServer/${GEOSERVER_VERSION}/extensions/geoserver-${GEOSERVER_VERSION}-control-flow-plugin.zip \
-   && unzip -o geoserver-${GEOSERVER_VERSION}-control-flow-plugin.zip \
-   && rm -rf geoserver-${GEOSERVER_VERSION}-control-flow-plugin.zip 
-RUN cd ${GEOSERVER_INSTALL_DIR}/WEB-INF/lib \
+    && wget http://sourceforge.net/projects/geoserver/files/GeoServer/${GEOSERVER_VERSION}/extensions/geoserver-${GEOSERVER_VERSION}-monitor-plugin.zip \
+    && unzip -o geoserver-${GEOSERVER_VERSION}-monitor-plugin.zip \
+    && rm -rf geoserver-${GEOSERVER_VERSION}-monitor-plugin.zip  \
+    && wget http://sourceforge.net/projects/geoserver/files/GeoServer/${GEOSERVER_VERSION}/extensions/geoserver-${GEOSERVER_VERSION}-control-flow-plugin.zip \
+    && unzip -o geoserver-${GEOSERVER_VERSION}-control-flow-plugin.zip \
+    && rm -rf geoserver-${GEOSERVER_VERSION}-control-flow-plugin.zip \
     && wget http://sourceforge.net/projects/geoserver/files/GeoServer/${GEOSERVER_VERSION}/extensions/geoserver-${GEOSERVER_VERSION}-pyramid-plugin.zip \
     && unzip -o geoserver-${GEOSERVER_VERSION}-pyramid-plugin.zip \
     && rm -rf geoserver-${GEOSERVER_VERSION}-pyramid-plugin.zip 
