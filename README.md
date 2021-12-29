@@ -14,3 +14,10 @@ docker run --rm --name sogis-geoserver -p 8080:8080 -v /Users/stefan/tmp/data_di
 ```
 
 Set `CATALINA_OPTS` env var for tuning JVM.
+
+## Plugins
+The following plugins are added:
+
+- monitor
+- control-flow
+- pyramid
