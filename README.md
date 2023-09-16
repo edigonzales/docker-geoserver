@@ -1,5 +1,9 @@
 # docker-geoserver 
 
+## Todo
+- Fix: `16-Sep-2023 15:26:42.645 WARNING [main] java.util.ArrayList.forEach Name = pub Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "50" for "maxActive" property, which is being ignored`
+- Fix: `16-Sep-2023 15:26:42.646 WARNING [main] java.util.ArrayList.forEach Name = pub Property maxWait is not used in DBCP2 , use maxWaitMillis instead. maxWaitMillis default value is PT-0.001S. You have set value of "-1" for "maxWait" property, which is being ignored.`
+
 ## Building
 ```
 docker build -t sogis/geoserver:2.23.2 .
