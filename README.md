@@ -2,7 +2,7 @@
 
 ## Building
 ```
-docker build -t sogis/geoserver:2.20.1 .
+docker build -t sogis/geoserver:2.23.2 .
 ```
 
 The image is built automatically by Github Action and is available from https://hub.docker.com/r/sogis/geoserver.
@@ -10,7 +10,7 @@ The image is built automatically by Github Action and is available from https://
 
 ## Usage
 ```
-docker run --rm --name sogis-geoserver -p 8080:8080 -v /Users/stefan/tmp/data_dir:/var/local/geoserver/data sogis/geoserver:2.20.1
+docker run --rm --name sogis-geoserver -p 8080:8080 -v /Users/stefan/tmp/data_dir:/var/local/geoserver/data sogis/geoserver:2.23.2
 ```
 
 Set `CATALINA_OPTS` env var for tuning JVM.
@@ -18,6 +18,10 @@ Set `CATALINA_OPTS` env var for tuning JVM.
 ## Plugins
 The following plugins are added:
 
-- monitor
+- ~~monitor~~
 - control-flow
 - pyramid
+
+## Env Vars in Tomcat
+- https://stackoverflow.com/questions/44761831/tomcat-8-context-xml-use-environment-variable-in-datasource
+- https://stackoverflow.com/questions/60604514/inject-environment-variables-in-tomcat-catalina-properties-kubernetes
