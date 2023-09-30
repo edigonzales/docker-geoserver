@@ -90,7 +90,8 @@ ENV CATALINA_OPTS "-server -Djava.awt.headless=true \
     -Xbootclasspath/a:$CATALINA_HOME/lib/marlin.jar \
     -Dsun.java2d.renderer=sun.java2d.marlin.DMarlinRenderingEngine \
     -Dorg.geotools.coverage.jaiext.enabled=true \
-    -DGEOSERVER_DATA_DIR=${GEOSERVER_DATA_DIR}"
+    -DGEOSERVER_DATA_DIR=${GEOSERVER_DATA_DIR} \
+    -Dorg.geoserver.htmlTemplates.staticMemberAccess=*"
 
 ADD start.sh /usr/local/bin/start.sh
 CMD start.sh
