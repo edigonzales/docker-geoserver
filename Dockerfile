@@ -80,6 +80,9 @@ RUN cp ${GEOSERVER_INSTALL_DIR}/WEB-INF/lib/postgresql-42.6.0.jar $CATALINA_HOME
 RUN rm ${GEOSERVER_INSTALL_DIR}/WEB-INF/lib/postgresql-42.6.0.jar 
 COPY context.xml $CATALINA_HOME/conf/context.xml
 
+# Eher zu Geoserver?
+COPY jars/geoserver-layerinfo-*.jar $CATALINA_HOME/lib/
+
 # Tomcat environment
 ENV CATALINA_OPTS "-server -Djava.awt.headless=true \
     -Dfile.encoding=UTF-8 \
