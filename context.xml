@@ -32,14 +32,14 @@
   <Resource name="jdbc/pub" auth="Container" type="javax.sql.DataSource"
             driverClassName="org.postgresql.Driver"
             url="jdbc:postgresql://pub-db:5432/pub"
-            username="ddluser" password="ddluser"
+            username="${DB_USER_PUB}" password="${DB_PWD_PUB}"
             maxActive="50" maxIdle="10" maxWait="-1"
             validationQuery="SELECT 1"/>
 
   <Resource name="jdbc/edit" auth="Container" type="javax.sql.DataSource"
             driverClassName="org.postgresql.Driver"
             url="jdbc:postgresql://edit-db:5432/edit"
-            username="ddluser" password="ddluser"
+            username="${DB_USER_EDIT}" password="${DB_PWD_EDIT}"
             maxActive="50" maxIdle="10" maxWait="-1"
             validationQuery="SELECT 1"/>
 
