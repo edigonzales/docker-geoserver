@@ -94,7 +94,8 @@ ENV CATALINA_OPTS "-server -Djava.awt.headless=true \
     -Dsun.java2d.renderer=sun.java2d.marlin.DMarlinRenderingEngine \
     -Dorg.geotools.coverage.jaiext.enabled=true \
     -DGEOSERVER_DATA_DIR=${GEOSERVER_DATA_DIR} \
-    -Dorg.geoserver.htmlTemplates.staticMemberAccess=*"
+    -Dorg.geoserver.htmlTemplates.staticMemberAccess=* \
+    -Dorg.apache.tomcat.util.digester.PROPERTY_SOURCE=org.apache.tomcat.util.digester.EnvironmentPropertySource"
 
 ADD start.sh /usr/local/bin/start.sh
 CMD start.sh
