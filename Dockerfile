@@ -52,6 +52,9 @@ RUN cd ${GEOSERVER_INSTALL_DIR}/WEB-INF/lib \
     && wget http://sourceforge.net/projects/geoserver/files/GeoServer/${GEOSERVER_VERSION}/extensions/geoserver-${GEOSERVER_VERSION}-control-flow-plugin.zip \
     && unzip -o geoserver-${GEOSERVER_VERSION}-control-flow-plugin.zip \
     && rm -rf geoserver-${GEOSERVER_VERSION}-control-flow-plugin.zip \
+    && wget http://sourceforge.net/projects/geoserver/files/GeoServer/${GEOSERVER_VERSION}/extensions/geoserver-${GEOSERVER_VERSION}-excel-plugin.zip \
+    && unzip -o geoserver-${GEOSERVER_VERSION}-excel-plugin.zip \
+    && rm -rf geoserver-${GEOSERVER_VERSION}-excel-plugin.zip \
     && wget http://sourceforge.net/projects/geoserver/files/GeoServer/${GEOSERVER_VERSION}/extensions/geoserver-${GEOSERVER_VERSION}-pyramid-plugin.zip \
     && unzip -o geoserver-${GEOSERVER_VERSION}-pyramid-plugin.zip \
     && rm -rf geoserver-${GEOSERVER_VERSION}-pyramid-plugin.zip 
