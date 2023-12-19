@@ -14,7 +14,7 @@ jobs:
     name: Build docker image GeoServer
     runs-on: ubuntu-20.04
     env:
-      GEOSERVER_VERSION: 2.23.2
+      GEOSERVER_VERSION: 2.24.1
 
     steps:
 

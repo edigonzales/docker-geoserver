@@ -4,7 +4,7 @@ FROM tomcat:9-jre11
 LABEL maintainer="Stefan Ziegler stefan.ziegler.de@gmail.com"
 
 ENV CATALINA_HOME=/usr/local/tomcat
-ARG GEOSERVER_VERSION=2.23.2
+ARG GEOSERVER_VERSION=2.24.1
 ENV GEOSERVER_DATA_DIR /usr/local/geoserver/data
 ENV GEOSERVER_INSTALL_DIR /usr/local/geoserver
 
