@@ -79,8 +79,8 @@ RUN sed -i '\:</web-app>:i\
 </filter-mapping>' ${GEOSERVER_INSTALL_DIR}/WEB-INF/web.xml
 
 # Jndi 
-RUN cp ${GEOSERVER_INSTALL_DIR}/WEB-INF/lib/postgresql-42.6.0.jar $CATALINA_HOME/lib/postgresql-42.6.0.jar
-RUN rm ${GEOSERVER_INSTALL_DIR}/WEB-INF/lib/postgresql-42.6.0.jar 
+RUN cp ${GEOSERVER_INSTALL_DIR}/WEB-INF/lib/postgresql-42.7.2.jar $CATALINA_HOME/lib/postgresql-42.7.2.jar
+RUN rm ${GEOSERVER_INSTALL_DIR}/WEB-INF/lib/postgresql-42.7.2.jar 
 COPY context.xml $CATALINA_HOME/conf/context.xml
 
 # Eher zu Geoserver?
