@@ -24,6 +24,7 @@ The following plugins are added:
 - ~~monitor~~
 - control-flow
 - pyramid
+- excel output
 
 ## Links
 - https://tomcat.apache.org/tomcat-9.0-doc/jndi-resources-howto.html

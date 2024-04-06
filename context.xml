@@ -34,7 +34,7 @@
             url="${DB_URI_PUB}"
             username="${DB_USER_PUB}" password="${DB_PWD_PUB}"
             maxTotal="50" maxIdle="10" maxWaitMillis="60000"
-            validationQuery="SELECT 1"  onnectionProperties="user=geoserver_pub"/>
+            validationQuery="SELECT 1" connectionProperties="user=geoserver_pub"/>
 
   <Resource name="jdbc/edit" auth="Container" type="javax.sql.DataSource"
             driverClassName="org.postgresql.Driver"
